@@ -1,7 +1,7 @@
 """Projeto Aplicado I - AED de contratos reais da Unifesp no PNCP.
 
 Autor: Gustavo Curio Kolbe - RA 10750739.
-Neste estudo, analiso valores globais, vigências cadastradas e o intervalo
+O estudo analisa valores globais, vigências cadastradas e o intervalo
 entre assinatura e publicação. A fonte é pública e o recorte considera
 publicações de 2025. As vigências e os valores podem refletir retificações.
 
@@ -20,12 +20,12 @@ PASTA_PROJETO = Path(__file__).resolve().parents[1]
 ARQUIVO_DADOS = PASTA_PROJETO / 'dados' / 'contratos_unifesp_pncp_2025.csv'
 AZUL = '#06345d'
 VERDE = '#00a76f'
-# Arquivo que vou analisar.
+# Caminho do arquivo de dados.
 arquivo_entrada = ARQUIVO_DADOS
 pasta_saida = PASTA_PROJETO / 'output'
 
 def calcular_estatisticas(serie):
-    """Calcula uma medida por linha, usando somente os valores preenchidos."""
+    """Calcula as estatísticas descritivas dos valores preenchidos."""
     valores_validos = serie.dropna()
     if valores_validos.empty:
         return {'count': 0}
@@ -54,7 +54,7 @@ def calcular_estatisticas(serie):
         resultado['cv_percentual'] = None
     return resultado
 
-# 1. Leitura. Preservo os identificadores como texto para não perder zeros.
+# 1. Leitura. Identificadores são lidos como texto para preservar os zeros.
 # read_csv() lê o arquivo; dados é uma tabela do Pandas (DataFrame).
 tipos_identificadores = {
     'ID_PNCP': str,
@@ -95,8 +95,8 @@ for coluna, n in dados.isna().sum().items():
 datas_invalidas = {}
 
 # 2. Conversão. As datas oficiais usam ano-mês-dia e a publicação inclui hora.
-# Normalizo a publicação para comparar dias de calendário, sem considerar
-# frações de dia. Não uso nenhuma dessas datas como solicitação interna.
+# A data de publicação é normalizada no cálculo do intervalo para comparar
+# dias de calendário, sem considerar a hora.
 for coluna in ['Data_Assinatura', 'Data_Publicacao', 'Data_Vigencia_Inicio', 'Data_Vigencia_Fim']:
     valores_antes_da_conversao = dados[coluna]
     dados[coluna] = pd.to_datetime(valores_antes_da_conversao, format='ISO8601', errors='coerce')
@@ -109,8 +109,8 @@ for coluna in ['Valor_Inicial', 'Valor_Global']:
     dados[coluna] = pd.to_numeric(dados[coluna], errors='coerce')
 
 # 3. Recorte. Empenhos, termos de adesão e receitas não são comparáveis
-# diretamente aos contratos iniciais de despesa. Mantenho toda a base em
-# arquivo, mas delimito a AED a esse grupo antes de calcular estatísticas.
+# diretamente aos contratos iniciais de despesa. A base completa é preservada,
+# e a AED considera apenas esse grupo antes de calcular as estatísticas.
 # Cada condição tem um nome. O símbolo & combina as duas condições.
 contrato_inicial = dados['Tipo_Instrumento'] == 'Contrato (termo inicial)'
 contrato_de_despesa = dados['Receita'] == False
@@ -156,8 +156,8 @@ vigencias = contratos.loc[contratos['Vigencia_Valida'], 'Vigencia_Dias']
 publicacoes = contratos.loc[contratos['Publicacao_Valida'], 'Intervalo_Publicacao_Dias']
 
 # 4. Estatística descritiva. Tamanhos pequenos aparecem nas tabelas e devem
-# limitar a interpretação. A categoria oficial é mantida, sem rótulos jurídicos
-# inventados. Valor global cadastrado não equivale a gasto pago em 2025.
+# limitar a interpretação. As categorias seguem a classificação do PNCP.
+# Valor global cadastrado não equivale a gasto pago em 2025.
 grupos_categoria = contratos.groupby('Categoria')
 
 estatisticas_categoria = pd.DataFrame()
@@ -202,7 +202,7 @@ grupos_mensais = contratos.groupby(contratos['Data_Publicacao'].dt.month)
 publicacoes_por_mes = pd.DataFrame()
 publicacoes_por_mes['Quantidade'] = grupos_mensais['ID_PNCP'].count()
 publicacoes_por_mes['Soma_Valor'] = grupos_mensais['Valor_Global'].sum()
-# Incluo também os meses sem registros, preenchendo suas contagens com zero.
+# Meses sem registros ficam com contagem zero.
 publicacoes_por_mes = publicacoes_por_mes.reindex(range(1, 13), fill_value=0)
 
 publicacoes_por_mes.index.name = 'Mes_Publicacao'
@@ -291,7 +291,7 @@ plt.rcParams.update({'axes.spines.top': False, 'axes.spines.right': False})
 
 def salvar_grafico(nome):
     """Salva a figura com boa resolução e libera a memória usada."""
-    # Ajusto o espaço, salvo o gráfico e fecho a figura.
+    # Ajusta o espaço, salva o gráfico e fecha a figura.
     plt.tight_layout()
     plt.savefig(pasta_graficos / nome, dpi=180, bbox_inches='tight', facecolor='white')
     plt.close()
