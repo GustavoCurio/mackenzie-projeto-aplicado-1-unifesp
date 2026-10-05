@@ -1,0 +1,30 @@
+{
+  "fonte": "Portal Nacional de Contratações Públicas (PNCP)",
+  "instituicao": "Universidade Federal de São Paulo (Unifesp)",
+  "cnpj_orgao": "60453032000174",
+  "endpoint": "https://pncp.gov.br/api/consulta/v1/contratos",
+  "data_coleta_utc": "2026-10-05T09:20:25.822843+00:00",
+  "recorte": "Contratos/empenhos publicados no PNCP entre 01/01/2025 e 31/12/2025",
+  "campo_filtro": "dataPublicacaoPncp",
+  "registros": 615,
+  "paginas": 2,
+  "fontes": [
+    {
+      "url": "https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20250101&dataFinal=20251231&cnpjOrgao=60453032000174&pagina=1&tamanhoPagina=500",
+      "arquivo_local": ".backup_local/pncp_bruto/pncp_unifesp_publicacao_2025_pagina_1.json",
+      "sha256": "fc246831dd16b8a150e40738f46dd0ee1f37bfa77940dd709715b31ce955013a",
+      "registros": 500
+    },
+    {
+      "url": "https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20250101&dataFinal=20251231&cnpjOrgao=60453032000174&pagina=2&tamanhoPagina=500",
+      "arquivo_local": ".backup_local/pncp_bruto/pncp_unifesp_publicacao_2025_pagina_2.json",
+      "sha256": "2104b44595560dac541acca7844bec155c21c567460321d87aae2f5acaba7587",
+      "registros": 115
+    }
+  ],
+  "arquivo_distribuido": "contratos_unifesp_pncp_2025.csv",
+  "sha256_csv": "ee145b453cc5b33075bdbe9df6c88edcfebf2f8f10c32b3958f17051af856dbc",
+  "colunas_csv": 19,
+  "fornecedores_pf_pseudonimizados": 2,
+  "observacao": "Valores e vigências refletem o cadastro disponível na coleta, inclusive retificações. Publicação não significa assinatura em 2025."
+}

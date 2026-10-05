@@ -1,0 +1,139 @@
+{
+  "fonte": "PNCP",
+  "instituicao": "Unifesp",
+  "linhas_coletadas": 615,
+  "colunas_entrada": 19,
+  "contratos_escopo": 183,
+  "fora_escopo": 432,
+  "instrumentos": {
+    "Empenho": 423,
+    "Contrato (termo inicial)": 189,
+    "Termo de Adesão": 3
+  },
+  "receitas_excluidas": 6,
+  "ausentes": {
+    "ID_PNCP": 0,
+    "Numero_Contrato": 0,
+    "Ano_Contrato": 0,
+    "CNPJ_Orgao": 0,
+    "Orgao": 0,
+    "Unidade": 0,
+    "Categoria": 0,
+    "Tipo_Instrumento": 0,
+    "Receita": 0,
+    "Tipo_Pessoa_Fornecedor": 0,
+    "ID_Fornecedor": 0,
+    "Fornecedor": 0,
+    "Valor_Inicial": 0,
+    "Valor_Global": 0,
+    "Data_Assinatura": 0,
+    "Data_Publicacao": 0,
+    "Data_Vigencia_Inicio": 0,
+    "Data_Vigencia_Fim": 0,
+    "Numero_Retificacoes": 0
+  },
+  "datas_invalidas": {
+    "Data_Assinatura": 0,
+    "Data_Publicacao": 0,
+    "Data_Vigencia_Inicio": 0,
+    "Data_Vigencia_Fim": 0
+  },
+  "estatisticas_valor": {
+    "count": 183.0,
+    "mean": 1064308.9909289617,
+    "std": 4058158.672622817,
+    "min": 0.0,
+    "25%": 61410.45,
+    "50%": 186000.0,
+    "75%": 529970.0,
+    "max": 42501415.4,
+    "moda": [
+      150000.0,
+      200000.0
+    ],
+    "percentis": {
+      "10": 16353.807999999999,
+      "90": 1652075.6880000017,
+      "95": 2519045.5480000004
+    },
+    "variancia": 16468651812183.783,
+    "amplitude": 42501415.4,
+    "cv_percentual": 381.2951602598726
+  },
+  "estatisticas_vigencia": {
+    "count": 183.0,
+    "mean": 494.07650273224044,
+    "std": 294.39805348438404,
+    "min": 30.0,
+    "25%": 364.0,
+    "50%": 365.0,
+    "75%": 693.5,
+    "max": 1888.0,
+    "moda": [
+      365.0
+    ],
+    "percentis": {
+      "10": 183.2,
+      "90": 840.4000000000002,
+      "95": 1095.0
+    },
+    "variancia": 86670.21389539423,
+    "amplitude": 1858.0,
+    "cv_percentual": 59.585520027033134
+  },
+  "estatisticas_publicacao": {
+    "count": 177.0,
+    "mean": 10.299435028248588,
+    "std": 46.29961282134297,
+    "min": 0.0,
+    "25%": 0.0,
+    "50%": 2.0,
+    "75%": 4.0,
+    "max": 368.0,
+    "moda": [
+      0.0
+    ],
+    "percentis": {
+      "10": 0.0,
+      "90": 14.400000000000006,
+      "95": 27.399999999999977
+    },
+    "variancia": 2143.6541474062665,
+    "amplitude": 368.0,
+    "cv_percentual": 449.53546184189275
+  },
+  "publicacoes_inconsistentes": 6,
+  "valores_zero": 1,
+  "soma_valor": 194768545.34,
+  "fornecedores": 78,
+  "maior_fornecedor": "FUNDACAO DE APOIO A UNIVERSIDADE FEDERAL DE SAO PAULO",
+  "participacao_top1": 37.89944508808745,
+  "participacao_top5": 87.08561262492817,
+  "limites_outliers": {
+    "Valor_Global": {
+      "inferior": -641428.875,
+      "superior": 1232809.325,
+      "quantidade": 25
+    },
+    "Vigencia_Dias": {
+      "inferior": -130.25,
+      "superior": 1187.75,
+      "quantidade": 3
+    },
+    "Intervalo_Publicacao_Dias": {
+      "inferior": -6.0,
+      "superior": 10.0,
+      "quantidade": 21
+    }
+  },
+  "correlacao_valor_vigencia": {
+    "pearson": 0.2076143859635289,
+    "spearman": 0.2954449966792539,
+    "pares": 183
+  },
+  "retificados": 51,
+  "anos_contrato": {
+    "2025": 170,
+    "2024": 13
+  }
+}
