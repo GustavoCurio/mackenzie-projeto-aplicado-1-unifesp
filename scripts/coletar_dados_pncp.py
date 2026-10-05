@@ -1,8 +1,8 @@
 """Coleta os registros reais da Unifesp no PNCP publicados em 2025.
 
 Execute: python scripts/coletar_dados_pncp.py
-Só é necessário coletar de novo se eu quiser atualizar a base.
-Para reproduzir o relatório, uso o CSV que acompanha a entrega.
+A coleta pode ser executada para atualizar a base.
+O CSV incluído no projeto permite reproduzir os resultados do relatório.
 """
 
 import csv
@@ -45,7 +45,7 @@ while True:
         'Accept': 'application/json',
         'User-Agent': 'Projeto-Aplicado-I/1.0',
     })
-    # Se a API estiver indisponível, o script para. Posso executá-lo novamente.
+    # Se a API estiver indisponível, a execução para e pode ser reiniciada.
     with urlopen(pedido, timeout=60) as resposta:
         conteudo = resposta.read()
     resultado = json.loads(conteudo)
@@ -84,7 +84,7 @@ for registro in registros:
 
 
 # 4. Criar códigos para fornecedores que são pessoas físicas
-# Não coloco os nomes e documentos de PF na base distribuída.
+# Nomes e documentos de pessoas físicas são substituídos por códigos no CSV.
 # A lista ordenada mantém o mesmo código para a mesma pessoa nesta coleta.
 documentos_pf = []
 for registro in registros:
